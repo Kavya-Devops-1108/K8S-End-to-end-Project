@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: statefulSet
+metadata:
+  name: mysts
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: app-database
+  templates:
+    metadata:
+      labels:
+         app: app-database
+
+    spec:
+      containers:
+        - image: 
+          name: db-cont
+          ports: kavya318506/phpapp:dbimage
+           - containerPort: 3306
+  # Integrate the secerts
+          envFrom:
+           - secretRef:
+               name: mysecret
+     # resouce quota
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpus: "200m"
+              memory: "250Mi"
+          volumeMounts:
+             name: mypvc
+             mountPath: /var/lib/mysql
+
+
+      volumeClaimTemplates:
+         - metadata:
+             name: mypvc
+           spec:
+             accessModes:
+                 - ReadWriteOnce
+             resources: 
+               requests:
+                  storage: 2Gi
