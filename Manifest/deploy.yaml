@@ -14,7 +14,7 @@ spec:
 
     spec:
       containers:
-        - image: 
+        - image: kavya318506/phpapp:appimage
           name: app-cont
           ports:
            - containerPort: 80
