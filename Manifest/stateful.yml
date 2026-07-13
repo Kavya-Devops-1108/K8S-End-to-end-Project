@@ -18,7 +18,7 @@ spec:
         - image:  kavya318506/phpapp:dbimage
           name: db-cont
           ports:
-            - containerPort: "3306"
+             - containerPort: 3306
   # Integrate the secerts
           envFrom:
            - secretRef:
