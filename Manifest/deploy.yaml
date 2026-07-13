@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: nginx
+  templates:
+    metadata:
+      labels:
+         app: nginx
+
+    spec:
+      containers:
+        - image: 
+          name: app-cont
+          ports:
+           - containerPort: 80
+  # Integrate the configmaps
+          envFrom:
+           - configMapRef:
+               name: myconfigmap
+     # resouce quota
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpus: "200m"
+              memory: "250Mi"
+ #liveness probe
+          livenessProbe:
+           httpGet:
+             path: /
+             port: 80
+             initialDelaySeconds: 20
+             periodSeconds: 5    
+
+  #Readiness Probe
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+              initialDelaySeconds: 10
+              periodSeconds: 5
