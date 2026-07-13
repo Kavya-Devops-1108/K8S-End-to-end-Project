@@ -21,7 +21,7 @@ spec:
             - port: 80
   egress:
     - to:
-      - PodSelector:
+      - podSelector:
          matchLabels:
            app: app-database
          ports: 
