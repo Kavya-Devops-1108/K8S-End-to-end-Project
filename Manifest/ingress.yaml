@@ -7,8 +7,8 @@ metadata:
   spec:
     ingressClassName: nginx
     rules:
-       -  http:
-            paths:
+       - http:
+          paths:
               - path:  /
                 pathType: Prefix
                 backend:
