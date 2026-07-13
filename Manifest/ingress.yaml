@@ -8,11 +8,11 @@ metadata:
     ingressClassName: nginx
     rules:
       - http:
-        paths:
-          - path:  /
-            pathType: Prefix
-            backend:
-              service:
-                name: app-svc
-                port: 
-                  number: 80
+         paths:
+           - path:  /
+             pathType: Prefix
+             backend:
+               service:
+                 name: app-svc
+                 port: 
+                   number: 80
