@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: myrq
+spec:
+  hard: 
+    limits.cpu: 4
+    limits.memory: 2Gi
+    requests.cpu: 2
+    request.memory: 4Gi
+    pods: 10
+    services: 5
