@@ -36,12 +36,12 @@ spec:
                mountPath: /var/lib/mysql
 
 
-      volumeClaimTemplates:
-         - metadata:
-             name: mypvc
-           spec:
-             accessModes:
-                 - ReadWriteOnce
-             resources: 
-               requests:
-                  storage: 2Gi
+  volumeClaimTemplates:
+       - metadata:
+            name: mypvc
+          spec:
+            accessModes:
+              - ReadWriteOnce
+          resources: 
+            requests:
+               storage: 2Gi
